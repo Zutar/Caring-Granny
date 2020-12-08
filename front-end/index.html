@@ -152,6 +152,11 @@ body {
 	padding-left: 30px;
 	padding-right: 30px;
 }
+
+.padding-15 {
+	padding-top: 15px;
+}
+
 .card {
     position: relative;
     display: -ms-flexbox;
@@ -184,9 +189,14 @@ body {
 .card-orange {
 	border-left: 9px solid #F6BC17;
 }
-.col-1, .col-search-1, .col-search-2, .col-md-6, .col-card-3, .col-card-4, .col-md-3 {
+.col-1, .col-search-1, .col-search-2, .col-md-6, .col-card-3, .col-card-4 {
 	position: relative;
 	width: 100%;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+.col-md-30 {
 	padding-right: 5px;
 	padding-left: 5px;
 }
@@ -194,12 +204,6 @@ body {
 
 
 
-.col-1, .col-search-1, .col-search-2, .col-md-6, .col-card-3, .col-card-4, .col-md-3{
-  position: relative;
-  width: 100%;
-  padding-right: 5px;
-  padding-left: 5px;
-}
 .col-card-3 {
 	text-align: center;
 }
@@ -236,11 +240,15 @@ body {
 }
 
 @media (min-width: 768px) {
-	
+  .col-md-1 {
+    -ms-flex: 0 0 2%;
+    flex: 0 0 2%;
+    max-width: 2%;
+  }
   .col-md-3 {
-    -ms-flex: 0 0 33%;
-    flex: 0 0 33%;
-    max-width: 33%;
+    -ms-flex: 0 0 32%;
+    flex: 0 0 32%;
+    max-width: 32%;
   }
   .col-md-6 {
     -ms-flex: 0 0 50%;
@@ -267,16 +275,81 @@ body {
 	max-width: 100%;
 }
 
+.col-left-right {
+    padding-top: 80px;
+    color: #5d4f8d;
+}
 
 	
+.col-2 {
+	-ms-flex: 0 0 50%;
+	flex: 0 0 50%;
+	max-width: 50%;
+}
+.col-2-border {
+	border-right: 1px solid #D5D5D5;
+}
+.col-2-padding {
+	padding-left: 10px;
+}
 
+.img-weather {
+    width: 55px;
+    height: 55px;
+    padding-top: 5px;
+}
 
+.time-weather {
+    font-size: 40px;
+}
 
+.clothes-title {
+	text-align: center;
+	font-weight: 700;
+}
 
+.clothes {
+	padding: 5px;
+	color: #FFFFFF;
+	border-radius: 0.9em;
+	display: inline-block;
+    width: 160px;
+}
 
+.col-center {
+	text-align: center
+}
 
+.clothes-green {
+	background-color: #40B562;
+}
 
+.clothes-violet {
+	background-color: #5B4D8A;
+}
 
+.clothes-orange {
+	background-color: #F6BC17;
+}
+
+.clothes-purple {
+	background-color: #E7A1A9;
+}
+
+.card-clothes {
+	background-color: #E3DFED;
+	border: 1px solid #5b4d8a;
+	width: 70px;
+	height: 85px;
+}
+
+.clothes-left-right {
+    padding-top: 25px;
+    color: #5d4f8d;
+}
+.clothes-row {
+	justify-content: center;
+}
 </style>
 <link href="src/icons/all.css" rel="stylesheet">
 </head>
@@ -349,53 +422,263 @@ body {
 			  </div>
 			</div>
 		</div>
+		
 		<div class="row">
+			<div class="col-md-1">
+				<div class="col-left-right">
+					<i class="fas fa-chevron-left fa-2x"></i>
+				</div>
+			</div>
 			<div class="col-md-3">
 				<div class="card card-green">
 					<div class="card-body">
-					Погода<br>
-					Погода<br>
-					Погода<br>
-					Погода<br>
-					Погода<br>
-					Погода<br>
-					Погода<br>
-					Погода
+						<div class="row">
+							<div class="col-2"><span class="time-weather">12:00</span></div>
+							<div class="col-2 col-2-padding"><img src='https://s1.iconbird.com/ico/2013/6/281/w256h25613715677480013PartlyCloudy.png' class='img-weather'></div>
+							
+							<div class="col-2 col-2-border">Температура</div>
+							<div class="col-2 col-2-padding">10&deg; C</div>
+							
+							<div class="col-2 col-2-border">Осадки</div>
+							<div class="col-2 col-2-padding">6%</div>
+							
+							<div class="col-2 col-2-border">Ветер</div>
+							<div class="col-2 col-2-padding">9км/час</div>
+							
+							<div class="col-2 col-2-border">Давление</div>
+							<div class="col-2 col-2-padding">761мм рт.ст.</div>
+							
+							<div class="col-2 col-2-border">Влажность</div>
+							<div class="col-2 col-2-padding">94%</div>
+						
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="card card-violet">
 					<div class="card-body">
-					Погода<br>
-					Погода<br>
-					Погода<br>
-					Погода<br>
-					Погода<br>
-					Погода<br>
-					Погода<br>
-					Погода
+						<div class="row">
+							<div class="col-2"><span class="time-weather">12:00</span></div>
+							<div class="col-2 col-2-padding"><img src='https://s1.iconbird.com/ico/2013/6/281/w256h25613715677480013PartlyCloudy.png' class='img-weather'></div>
+							
+							<div class="col-2 col-2-border">Температура</div>
+							<div class="col-2 col-2-padding">10&deg; C</div>
+							
+							<div class="col-2 col-2-border">Осадки</div>
+							<div class="col-2 col-2-padding">6%</div>
+							
+							<div class="col-2 col-2-border">Ветер</div>
+							<div class="col-2 col-2-padding">9км/час</div>
+							
+							<div class="col-2 col-2-border">Давление</div>
+							<div class="col-2 col-2-padding">761мм рт.ст.</div>
+							
+							<div class="col-2 col-2-border">Влажность</div>
+							<div class="col-2 col-2-padding">94%</div>
+						
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="card card-orange">
 					<div class="card-body">
-					Погода<br>
-					Погода<br>
-					Погода<br>
-					Погода<br>
-					Погода<br>
-					Погода<br>
-					Погода<br>
-					Погода
+						<div class="row">
+							<div class="col-2"><span class="time-weather">12:00</span></div>
+							<div class="col-2 col-2-padding"><img src='https://s1.iconbird.com/ico/2013/6/281/w256h25613715677480013PartlyCloudy.png' class='img-weather'></div>
+							
+							<div class="col-2 col-2-border">Температура</div>
+							<div class="col-2 col-2-padding">10&deg; C</div>
+							
+							<div class="col-2 col-2-border">Осадки</div>
+							<div class="col-2 col-2-padding">6%</div>
+							
+							<div class="col-2 col-2-border">Ветер</div>
+							<div class="col-2 col-2-padding">9км/час</div>
+							
+							<div class="col-2 col-2-border">Давление</div>
+							<div class="col-2 col-2-padding">761мм рт.ст.</div>
+							
+							<div class="col-2 col-2-border">Влажность</div>
+							<div class="col-2 col-2-padding">94%</div>
+						
+						</div>					</div>
+				</div>
+			</div>
+			<div class="col-md-1">
+				<div class="col-left-right">
+					<i class="fas fa-chevron-right fa-2x"></i>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-1">
+				<div class="card">
+					<div class="card-search">
+						<div class="clothes-title">Рекомендуемае одежда</div>
+						<div class="row">
+							<div class="col-2 col-center">
+								<div class="col-1"><span class="clothes clothes-green">Вверхняя Одежда</span></div>
+								<div class="row padding-15  clothes-row">
+									<div class="col-md-30">
+										<div class="clothes-left-right">
+											<i class="fas fa-chevron-left fa-2x"></i>
+										</div>
+									</div>
+									<div class="col-md-30">
+										<div class="card card-clothes">
+											<div class="card-body">
+												
+											</div>
+										</div>
+									</div>
+									<div class="col-md-30">
+										<div class="card card-clothes">
+											<div class="card-body">
+												
+											</div>
+										</div>
+									</div>
+									<div class="col-md-30">
+										<div class="card card-clothes">
+											<div class="card-body">
+												
+											</div>
+										</div>
+									</div>
+									
+									<div class="col-md-30">
+										<div class="clothes-left-right">
+											<i class="fas fa-chevron-right fa-2x"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-2 col-center">
+								<div class="col-1 "><span class="clothes clothes-orange">Обувь</span></div>
+								<div class="row padding-15  clothes-row">
+									<div class="col-md-30">
+										<div class="clothes-left-right">
+											<i class="fas fa-chevron-left fa-2x"></i>
+										</div>
+									</div>
+									<div class="col-md-30">
+										<div class="card card-clothes">
+											<div class="card-body">
+												
+											</div>
+										</div>
+									</div>
+									<div class="col-md-30">
+										<div class="card card-clothes">
+											<div class="card-body">
+												
+											</div>
+										</div>
+									</div>
+									<div class="col-md-30">
+										<div class="card card-clothes">
+											<div class="card-body">
+												
+											</div>
+										</div>
+									</div>
+									
+									<div class="col-md-30">
+										<div class="clothes-left-right">
+											<i class="fas fa-chevron-right fa-2x"></i>
+										</div>
+									</div>
+								</div>
+							
+							</div>
+						</div>
+						<div class="row padding-15">
+							<div class="col-2 col-center">
+								<div class="col-1 "><span class="clothes clothes-violet">Лёгкая Одежда</span></div>
+								<div class="row padding-15  clothes-row">
+									<div class="col-md-30">
+										<div class="clothes-left-right">
+											<i class="fas fa-chevron-left fa-2x"></i>
+										</div>
+									</div>
+									<div class="col-md-30">
+										<div class="card card-clothes">
+											<div class="card-body">
+												
+											</div>
+										</div>
+									</div>
+									<div class="col-md-30">
+										<div class="card card-clothes">
+											<div class="card-body">
+												
+											</div>
+										</div>
+									</div>
+									<div class="col-md-30">
+										<div class="card card-clothes">
+											<div class="card-body">
+												
+											</div>
+										</div>
+									</div>
+									
+									<div class="col-md-30">
+										<div class="clothes-left-right">
+											<i class="fas fa-chevron-right fa-2x"></i>
+										</div>
+									</div>
+								</div>
+							
+							</div>
+							<div class="col-2 col-center">
+								<div class="col-1 "><span class="clothes clothes-purple">Аксессуары</span></div>
+								<div class="row padding-15  clothes-row">
+									<div class="col-md-30">
+										<div class="clothes-left-right">
+											<i class="fas fa-chevron-left fa-2x"></i>
+										</div>
+									</div>
+									<div class="col-md-30">
+										<div class="card card-clothes">
+											<div class="card-body">
+												
+											</div>
+										</div>
+									</div>
+									<div class="col-md-30">
+										<div class="card card-clothes">
+											<div class="card-body">
+												
+											</div>
+										</div>
+									</div>
+									<div class="col-md-30">
+										<div class="card card-clothes">
+											<div class="card-body">
+												
+											</div>
+										</div>
+									</div>
+									
+									<div class="col-md-30">
+										<div class="clothes-left-right">
+											<i class="fas fa-chevron-right fa-2x"></i>
+										</div>
+									</div>
+								</div>
+							
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			
-
-
 		</div>
+	
+	
 	</div>
 </div>
 
