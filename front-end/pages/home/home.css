@@ -141,7 +141,7 @@ body {
 .card-orange {
 	border-left: 9px solid #F6BC17;
 }
-.col-1, .col-search-1, .col-search-2, .col-md-6, .col-card-3, .col-card-4 {
+.col-1, .col-search-1, .col-search-2, .col-md-6, .col-card-3, .col-card-4, .col-md-3 {
 	position: relative;
 	width: 100%;
 	padding-right: 5px;
