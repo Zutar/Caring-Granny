@@ -12,6 +12,7 @@ body {
 	font-size: 16px;
     width: 100%;
     min-width: 1024px !important;
+    max-height: 100vh;
 	height: 100%;
 	margin: 0;
 	/* overflow-x: */
@@ -286,4 +287,10 @@ body {
 }
 .clothes-row {
 	justify-content: center;
+}
+
+.about-application{
+    padding: 0em 0.5em 0em 0.5em;
+    text-align: center;
+    font-weight: 600;
 }
