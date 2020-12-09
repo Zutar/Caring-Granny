@@ -1,3 +1,5 @@
+/* Error page - START */
+
 .error-wrapper{
     width: 100%;
     height: 100vh;
@@ -70,6 +72,8 @@
     right: 40%;
     animation: error-circle 1.5s infinite alternate-reverse;
 }
+
+/* Error page - END */
 
 @keyframes error-circle{
     100%{

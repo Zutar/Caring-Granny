@@ -1,0 +1,28 @@
+
+.max-width-card {
+    max-width: 500px;
+}
+
+.cards-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-green {
+	border-left: 9px solid #40B562;
+}
+.card-violet {
+	border-left: 9px solid #5B4D8A;
+}
+.card-orange {
+	border-left: 9px solid #F6BC17;
+}
+
+.card-body {
+	padding: .1rem 1.25rem;
+}
+
+.time-weather {
+    font-size: 40px;
+}
