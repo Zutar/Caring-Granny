@@ -109,6 +109,10 @@ body {
 	padding-top: 15px;
 }
 
+.card-search {
+	padding: .75rem 1.25rem;
+}
+
 .card {
     position: relative;
     display: -ms-flexbox;
@@ -124,23 +128,6 @@ body {
 	margin-bottom: 10px;
 }
 
-.card-search {
-	padding: .75rem 1.25rem;
-}
-
-.card-body {
-	padding: .1rem 1.25rem;
-}
-
-.card-green {
-	border-left: 9px solid #40B562;
-}
-.card-violet {
-	border-left: 9px solid #5B4D8A;
-}
-.card-orange {
-	border-left: 9px solid #F6BC17;
-}
 .col-1, .col-search-1, .col-search-2, .col-md-6, .col-card-3, .col-card-4, .col-md-3 {
 	position: relative;
 	width: 100%;
@@ -251,9 +238,6 @@ body {
     padding-top: 5px;
 }
 
-.time-weather {
-    font-size: 40px;
-}
 
 .clothes-title {
 	text-align: center;
@@ -290,7 +274,7 @@ body {
 
 .card-clothes {
 	background-color: #E3DFED;
-	border: 1px solid #5b4d8a;
+	border: 1px solid #5b4d8a !important;
 	width: 70px;
 	height: 85px;
 }
