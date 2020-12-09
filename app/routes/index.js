@@ -10,6 +10,7 @@ module.exports = (function(client) {
     const session = require('express-session');
     const config = require('../config');
     const path = require('path');
+    const axios = require('axios').default;
     const router = express.Router();
     let Weather = require('../bin/Weather');
     let CaringMilf = require('../bin/CaringMilf');
@@ -113,6 +114,26 @@ module.exports = (function(client) {
         cm.get({weather: {temperature: 5, precipitation: false}, user: {gender: 1}}).then(result => {
             res.send(result);
         });
+    });
+
+    // Finding the right set
+    router.get('/geo/findName', (req, res) => {
+        const data = req.query;
+        const lat = data.lat;
+        const lon = data.lon;
+        if(lat && lon){
+            const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
+            axios.get(url)
+            .then(function (response) {
+                let data = response.data;
+                res.send({status: true, code: 200, data: data.address});
+            })
+            .catch(function (error){
+                res.send({status: false, code: 500, error: error});
+            });
+        }else{
+            res.send({status: false, code: 404});
+        }
     });
     
     router.post('/register',
