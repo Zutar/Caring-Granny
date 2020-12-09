@@ -91,11 +91,9 @@ module.exports = (function(client) {
 
 
     router.get('/', (req, res) => {
-        client.query('select * from information_schema.tables;', (err, res) => {
-            res.rows.forEach(element => {
-                console.log(element['table_name']);
-            });
-          })
+        cm.get({}).then((r) => {
+            console.log(r);
+        });
         res.render('./pages/index.ejs', {root: '../' + __dirname});
     });
 
