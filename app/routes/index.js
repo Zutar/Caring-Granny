@@ -1,7 +1,6 @@
 const { response } = require('express');
 
-module.exports = (function() {
-
+module.exports = (function(client) {
     'use strict';
     const express = require('express');
     const bodyParser = require('body-parser');
@@ -11,14 +10,16 @@ module.exports = (function() {
     const session = require('express-session');
     const config = require('../config');
     const axios = require('axios').default;
+    const path = require('path');
     const router = express.Router();
-    let CaringMilf = require('../bin/CaringMilf')
+    let Weather = require('../bin/Weather');
+    let CaringMilf = require('../bin/CaringMilf');
 
 
     let cm = new CaringMilf();
-
-
-    router.use(express.static('../' + __dirname));
+    let weather = new Weather(config.weatherAPI);
+    
+    router.use('/static', express.static(path.join(__dirname + '/../static')));
     router.use(bodyParser.json({limit:'5mb'}));
     router.use(bodyParser.urlencoded({
         extended: true,
@@ -41,6 +42,20 @@ module.exports = (function() {
         done(null, user);
     });
     
+    passport.use('signup', new LocalStrategy({
+        usernameField : 'email',
+        passwordField : 'password',
+        passReqToCallback: true
+      }, async (req, email, password, done) => {
+        try {
+          const name = req.body;
+          console.log(name);
+          return done(null, name);
+        } catch (error) {
+          done(error);
+        }
+    }));
+
     passport.use(new LocalStrategy(
         function(username, password, done) {
             if(username && password){
@@ -76,7 +91,11 @@ module.exports = (function() {
 
 
     router.get('/', (req, res) => {
-        cm.sayHello();
+        client.query('select * from information_schema.tables;', (err, res) => {
+            res.rows.forEach(element => {
+                console.log(element['table_name']);
+            });
+          })
         res.render('./pages/index.ejs', {root: '../' + __dirname});
     });
 
@@ -84,34 +103,8 @@ module.exports = (function() {
 
     router.get('/weather', (req, res) => {
         const data = req.query;
-        let url = null;
-        if(!data){
-            res.send({status: 404});
-            return;
-        }
-
-        const type = data.type ? data.type : "weather";
-
-        if(data.lat && data.lon){
-            const lat = data.lat;
-            const lon = data.lon;
-            url = `http://api.openweathermap.org/data/2.5/${type}?lat=${lat}&lon=${lon}&appid=${config.weatherAPI}&units=metric&lang=ru`;
-        }else if(data.city){
-            const city = data.city;
-            url = `http://api.openweathermap.org/data/2.5/${type}?q=${city}&appid=${config.weatherAPI}&units=metric&lang=ru`;
-        }else{
-            res.send({status: 404});
-            return;
-        }
-        console.log(url);
-        axios.get(url)
-        .then(function (response) {
-            let data = response.data;
-            data = type === "weather" ? data : data.list.slice(0, 9);
-            res.send({status: 200, data: data})
-        })
-        .catch(function (error) {
-            res.send({status: 505, error: error});
+        weather.get(data).then((result) => {
+            res.send(result);
         });
     });
 
@@ -124,7 +117,7 @@ module.exports = (function() {
     });
     
     router.post('/register',
-      passport.authenticate('local', { successRedirect: '/',
+      passport.authenticate('signup', { successRedirect: '/',
         failureRedirect: '/register',
         failureFlash: false })
     );
@@ -143,8 +136,8 @@ module.exports = (function() {
 
     router.use(function(req, res, next){
         res.status(404);
-        res.render('../error/404.ejs', {root: '../' + __dirname});
+        res.render('./error/404.ejs', {root: '../' + __dirname});
     });
 
     return router;
-})();
+});

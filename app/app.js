@@ -1,10 +1,9 @@
 const express = require('express');
-const index = require('./routes/index');
 const config = require('./config');
+const {Pool} = require('pg');
 
-const {Pool,Client} = require('pg')
 const conectionString= `postgressql://${config.db.user}:${config.db.password}@${config.db.host}:${config.db.port}/${config.db.database}?sslmode=disable`
-const client= new Client({
+const client= new Pool({
     connectionString:conectionString
 })
 
@@ -14,7 +13,8 @@ client.connect((err) => {
     }
     else{   
         console.log("Подключение к серверу MySQL успешно установлено");
-           
+        
+        const index = require('./routes/index')(client);
         const app = express();
     
         app.use('/', index);
