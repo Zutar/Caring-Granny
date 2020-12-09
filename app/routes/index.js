@@ -1,3 +1,5 @@
+const { response } = require('express');
+
 module.exports = (function() {
 
     'use strict';
@@ -8,6 +10,7 @@ module.exports = (function() {
     const bcrypt = require('bcrypt');
     const session = require('express-session');
     const config = require('../config');
+    const axios = require('axios').default;
     const router = express.Router();
     let CaringMilf = require('../bin/CaringMilf')
 
@@ -76,6 +79,41 @@ module.exports = (function() {
         cm.sayHello();
         res.render('./pages/index.ejs', {root: '../' + __dirname});
     });
+
+    /*weather*/
+
+    router.get('/weather', (req, res) => {
+        const data = req.query;
+        let url = null;
+        if(!data){
+            res.send({status: 404});
+            return;
+        }
+
+        const type = data.type ? data.type : "weather";
+
+        if(data.lat && data.lon){
+            const lat = data.lat;
+            const lon = data.lon;
+            url = `http://api.openweathermap.org/data/2.5/${type}?lat=${lat}&lon=${lon}&appid=${config.weatherAPI}&units=metric&lang=ru`;
+        }else if(data.city){
+            const city = data.city;
+            url = `http://api.openweathermap.org/data/2.5/${type}?q=${city}&appid=${config.weatherAPI}&units=metric&lang=ru`;
+        }else{
+            res.send({status: 404});
+            return;
+        }
+        console.log(url);
+        axios.get(url)
+        .then(function (response) {
+            let data = response.data;
+            data = type === "weather" ? data : data.list.slice(0, 9);
+            res.send({status: 200, data: data})
+        })
+        .catch(function (error) {
+            res.send({status: 505, error: error});
+        });
+    });
     
     router.post('/login',
       passport.authenticate('local', { successRedirect: '/admin',
@@ -83,6 +121,7 @@ module.exports = (function() {
         failureFlash: false })
     );
     
+
     router.get('/logout', function (req, res){
         req.session.destroy(function (err) {
           res.redirect('/');
