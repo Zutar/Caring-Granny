@@ -114,20 +114,32 @@ module.exports = (function() {
             res.send({status: 505, error: error});
         });
     });
+
+    router.get('/clothes', (req, res) => {
+
+    });
+
+    router.get('/clothes/findSet', (req, res) => {
+
+    });
     
+    router.post('/register',
+      passport.authenticate('local', { successRedirect: '/',
+        failureRedirect: '/register',
+        failureFlash: false })
+    );
+
     router.post('/login',
-      passport.authenticate('local', { successRedirect: '/admin',
+      passport.authenticate('local', { successRedirect: '/',
         failureRedirect: '/login',
         failureFlash: false })
     );
     
-
     router.get('/logout', function (req, res){
         req.session.destroy(function (err) {
           res.redirect('/');
         });
     });
-
 
     router.use(function(req, res, next){
         res.status(404);
