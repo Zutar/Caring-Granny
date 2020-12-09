@@ -1,12 +1,19 @@
 class WeatherComponent {
-    constructor() {
-        this.time;     // Время
-        this.time;     // Температура
-        this.downfall; // Осадки
-        this.winter;   // Ветер
-        this.pressure; // Давление
-        this.humidity; // Влажность
-        this.img_src; // ссылка на картинку
+    constructor(time = '12:00', 
+                temp = 8, 
+                downfall = 5, 
+                winter = 9, 
+                pressure = 750, 
+                humidity = 46, 
+                img_src = "https://s1.iconbird.com/ico/2013/6/281/w256h25613715677480013PartlyCloudy.png") 
+    {
+        this.time = time;     // Время
+        this.temp = temp;     // Температура
+        this.downfall = downfall; // Осадки
+        this.winter = winter;   // Ветер
+        this.pressure = pressure; // Давление
+        this.humidity = humidity; // Влажность
+        this.img_src = img_src; // ссылка на картинку
 
         this.cardColors = [
             'card-green',

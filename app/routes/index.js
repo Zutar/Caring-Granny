@@ -98,7 +98,8 @@ module.exports = (function(client) {
     });
 
     /*weather*/
-
+    // /weather?lat=50&lon=100 // Текущая погода
+    // /weather?lat=50&lon=100&type=forecast // Прогноз погоды
     router.get('/weather', (req, res) => {
         const data = req.query;
         weather.get(data).then((result) => {
