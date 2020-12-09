@@ -1,20 +1,7 @@
-let res=await fetch(localhost/clothes/findSet,
+let res=await fetch(/clothes/findSet,
     body:{weather: {temperature: 15, precipitation: false}, user: {gender: 1}})
 
-fetch(localhost/clothes/findSet, {  
-    method: 'post',  
-    headers: {  
-      "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"  
-    },  
-    body: 'foo=bar&lorem=ipsum'  
-  })
-  .then(json)  
-  .then(function (data) {  
-    console.log('Request succeeded with JSON response', data);  
-  })  
-  .catch(function (error) {  
-    console.log('Request failed', error);  
-  });
+
 
 
 
