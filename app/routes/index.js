@@ -71,9 +71,9 @@ module.exports = (function() {
         }
     };
 
-
+    // TESTS
     router.get('/', (req, res) => {
-        cm.sayHello();
+        cm.debug(10);
         res.render('./pages/index.ejs', {root: '../' + __dirname});
     });
     
