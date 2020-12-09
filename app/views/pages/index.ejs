@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <HTML>
 <head>
-	<title>Caring Milf App</title>
+	<title>ITL ONAT</title>
 	<meta charset="utf-8">
     <meta name="description" content="Web app">
     <meta name="keyboard" content="Web, app">
@@ -23,7 +23,10 @@
     <!-- [BEGIN] Left menu -->
 	<div class="secondary-sidebar">
 		<div class="logo-box">
-			Caring Milf
+			ITL ONAT
+		</div>
+		<div class="about-application">
+			Мы поможем вам выбрать одежду по погоде ;)
 		</div>
 		<div class="secondary-sidebar-menu">
 			<ul>
@@ -37,14 +40,11 @@
 				</li>
 				<li class="active-link-bottom">
                     <div class="active-link-bottom-add">
-					    <a href="/home">Главная</a>
+					    <a href="/myClothes">Мой гардероб</a>
                     </div>
 				</li>
 				<li>
-					<a href="/home">Название 3</a>
-				</li>
-				<li>
-					<a href="/home">Название 4</a>
+					<a href="/editClothes">Редактировать гардероб</a>
 				</li>
 				
 			</ul>
@@ -75,15 +75,15 @@
 		<div class="row padding-30">
 			<div class="col-card-3">
 			  <div class="card">
-				<div class="card-body">
-					10.12.2020 <i class="far fa-calendar-alt"></i>
+				<div class="card-body" id="current-date">
+					[DATE] <i class="far fa-calendar-alt"></i>
 				</div>
 			  </div>
 			</div>
 			<div class="col-card-4">
 			  <div class="card">
 				<div class="card-body">
-					Одесса, Одесская область <i class="fas fa-map-marker-alt"></i>
+					[Город] <i class="fas fa-map-marker-alt"></i>
 				</div>
 			  </div>
 			</div>
@@ -196,7 +196,7 @@
 			<div class="col-1">
 				<div class="card">
 					<div class="card-search">
-						<div class="clothes-title">Рекомендуемае одежда</div>
+						<div class="clothes-title">Рекомендуем сегодня надеть</div>
 						<div class="row">
 							<div class="col-2 col-center">
 								<div class="col-1"><span class="clothes clothes-green">Вверхняя Одежда</span></div>
@@ -361,6 +361,7 @@
 
 <!-- JS scripts -->
 <script src="./static/js/weatgerComponent.js"></script>
+<script src="./static/js/currentDate.js"></script>
 
 </body>
 </HTML>
