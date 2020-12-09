@@ -9,23 +9,23 @@ module.exports = (function(client) {
     const bcrypt = require('bcrypt');
     const session = require('express-session');
     const config = require('../config');
-    const axios = require('axios').default;
     const path = require('path');
     const router = express.Router();
     let Weather = require('../bin/Weather');
     let CaringMilf = require('../bin/CaringMilf');
 
 
-    let cm = new CaringMilf();
-    let weather = new Weather(config.weatherAPI);
+    let cm = new CaringMilf(client);  // Clothes
+    let weather = new Weather(config.weatherAPI); // Weather
     
-    router.use('/static', express.static(path.join(__dirname + '/../static')));
+    router.use('/static', express.static(path.join(__dirname + '/../static'))); // Set default static files path
     router.use(bodyParser.json({limit:'5mb'}));
     router.use(bodyParser.urlencoded({
         extended: true,
         limit:'5mb'
     }));
 
+// For authentication - start
     router.use(session({
         secret: config.session,
         resave: false,
@@ -89,15 +89,13 @@ module.exports = (function(client) {
         }
     };
 
+// For authentication - end 
 
     router.get('/', (req, res) => {
-        cm.get({}).then((r) => {
-            console.log(r);
-        });
         res.render('./pages/index.ejs', {root: '../' + __dirname});
     });
 
-    /*weather*/
+    /*Weather*/
     // /weather?lat=50&lon=100 // Текущая погода
     // /weather?lat=50&lon=100&type=forecast // Прогноз погоды
     router.get('/weather', (req, res) => {
@@ -110,9 +108,11 @@ module.exports = (function(client) {
     router.get('/clothes', (req, res) => {
 
     });
-
+    // Finding the right set
     router.get('/clothes/findSet', (req, res) => {
-
+        cm.get({weather: {temperature: 5, precipitation: false}, user: {gender: 1}}).then(result => {
+            res.send(result);
+        });
     });
     
     router.post('/register',
