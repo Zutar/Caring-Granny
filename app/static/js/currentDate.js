@@ -1,7 +1,6 @@
 function setDate() {
     let blockDate = document.getElementById('current-date');
     let current_date = new Date();
-    console.log(blockDate, current_date);
 
     let year = current_date.getFullYear();
     let day = current_date.getDate();

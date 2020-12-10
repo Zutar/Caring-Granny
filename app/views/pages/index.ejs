@@ -17,6 +17,7 @@
 	<!-- Weather Cards -->
 	<link rel="stylesheet" href="./static/css/weaterCards.css">
 	<link rel="stylesheet" href="./static/css/main.css">
+	<link rel="stylesheet" href="./static/css/clothesCards.css">
 </head>
 <body>
 <div class="page-container">
@@ -38,14 +39,15 @@
 				<li class="active-link">
 					<a href="/home">Главная</a>
 				</li>
-				<li class="active-link-bottom">
+				
+				<!-- <li class="active-link-bottom">
                     <div class="active-link-bottom-add">
 					    <a href="/myClothes">Мой гардероб</a>
                     </div>
 				</li>
 				<li>
 					<a href="/editClothes">Редактировать гардероб</a>
-				</li>
+				</li> -->
 				
 			</ul>
 		</div>
@@ -59,7 +61,7 @@
 					<div class="row">
 						<div class="col-search-1">
 							<input type="text" class="input-search" placeholder='Поиск'>
-							<button type="button" class="btn"><i class="fas fa-search"></i></button>
+							<button type="button" class="btn search-button"><i class="fas fa-search"></i></button>
 						</div>
 						<div class="col-search-2 text-right fas-violet">
 							<i class="far fa-user-circle fa-20x"></i> 
@@ -75,21 +77,21 @@
 		<div class="row padding-30">
 			<div class="col-card-3">
 			  <div class="card">
-				<div class="card-body" id="current-date">
+				<div class="header-card-body" id="current-date">
 					[DATE] <i class="far fa-calendar-alt"></i>
 				</div>
 			  </div>
 			</div>
 			<div class="col-card-4">
 			  <div class="card">
-				<div class="card-body">
+				<div class="header-card-body address-field">
 					[Город] <i class="fas fa-map-marker-alt"></i>
 				</div>
 			  </div>
 			</div>
 			<div class="col-card-3">
 			  <div class="card">
-				<div class="card-body">
+				<div class="header-card-body">
 					<button type="button" class="btn"><i class="fas fa-male"></i></button>
 					<button type="button" class="btn btn-outline"><i class="fas fa-female"></i></button>
 				</div>
@@ -99,100 +101,48 @@
 		
 		<!-- Наполнятеся js -->
 		<div class="cards-wrapper" id="weather">
-			<!-- <div class="col-md-1">
-				<div class="col-left-right">
-					<i class="fas fa-chevron-left fa-2x"></i>
-				</div>
+			<!-- JS weatherComponent.js -->
+		</div>
+
+		<!-- Clothes Cards -->
+		<div class="wrapper">
+			<div class="label">
+				Мы рекомендуем надеть
 			</div>
-			<div class="col-md-3">
-				<div class="card card-green">
-					<div class="card-body">
-						<div class="row">
-							<div class="col-2"><span class="time-weather">12:00</span></div>
-							<div class="col-2 col-2-padding"><img src='https://s1.iconbird.com/ico/2013/6/281/w256h25613715677480013PartlyCloudy.png' class='img-weather'></div>
-							
-							<div class="col-2 col-2-border">Температура</div>
-							<div class="col-2 col-2-padding">10&deg; C</div>
-							
-							<div class="col-2 col-2-border">Осадки</div>
-							<div class="col-2 col-2-padding">6%</div>
-							
-							<div class="col-2 col-2-border">Ветер</div>
-							<div class="col-2 col-2-padding">9км/час</div>
-							
-							<div class="col-2 col-2-border">Давление</div>
-							<div class="col-2 col-2-padding">761мм рт.ст.</div>
-							
-							<div class="col-2 col-2-border">Влажность</div>
-							<div class="col-2 col-2-padding">94%</div>
-						
+			<div class="row-cards">
+				<div class="cards-clothes">
+					<div class="one-clothes-component-label">
+						Легкая одежда
+					</div>
+					<div class="clothes-row">
+						<div class="">
+							<div class="one-clothes-component">
+								<img class="one-clothes-component-img" src="http://141.105.134.186/files/img/clothes/Shirt_short_sleeves_F.png" alt="">
+							</div>
+						</div>
+						<div class="one-clothes-component">
+							<img class="one-clothes-component-img" src="http://141.105.134.186/files/img/clothes/Shirt_short_sleeves_F.png" alt="">
+						</div>
+						<div class="one-clothes-component">
+							<img class="one-clothes-component-img" src="http://141.105.134.186/files/img/clothes/Shirt_short_sleeves_F.png" alt="">
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card card-violet">
-					<div class="card-body">
-						<div class="row">
-							<div class="col-2"><span class="time-weather">12:00</span></div>
-							<div class="col-2 col-2-padding"><img src='https://s1.iconbird.com/ico/2013/6/281/w256h25613715677480013PartlyCloudy.png' class='img-weather'></div>
-							
-							<div class="col-2 col-2-border">Температура</div>
-							<div class="col-2 col-2-padding">10&deg; C</div>
-							
-							<div class="col-2 col-2-border">Осадки</div>
-							<div class="col-2 col-2-padding">6%</div>
-							
-							<div class="col-2 col-2-border">Ветер</div>
-							<div class="col-2 col-2-padding">9км/час</div>
-							
-							<div class="col-2 col-2-border">Давление</div>
-							<div class="col-2 col-2-padding">761мм рт.ст.</div>
-							
-							<div class="col-2 col-2-border">Влажность</div>
-							<div class="col-2 col-2-padding">94%</div>
-						
-						</div>
-					</div>
+				<div class="cards-clothes">
+
 				</div>
 			</div>
-			<div class="col-md-3">
-				<div class="card card-orange">
-					<div class="card-body">
-						<div class="row">
-							<div class="col-2"><span class="time-weather">12:00</span></div>
-							<div class="col-2 col-2-padding"><img src='https://s1.iconbird.com/ico/2013/6/281/w256h25613715677480013PartlyCloudy.png' class='img-weather'></div>
-							
-							<div class="col-2 col-2-border">Температура</div>
-							<div class="col-2 col-2-padding">10&deg; C</div>
-							
-							<div class="col-2 col-2-border">Осадки</div>
-							<div class="col-2 col-2-padding">6%</div>
-							
-							<div class="col-2 col-2-border">Ветер</div>
-							<div class="col-2 col-2-padding">9км/час</div>
-							
-							<div class="col-2 col-2-border">Давление</div>
-							<div class="col-2 col-2-padding">761мм рт.ст.</div>
-							
-							<div class="col-2 col-2-border">Влажность</div>
-							<div class="col-2 col-2-padding">94%</div>
-						
-						</div>					
-					</div>
-				</div> 
-			</div>-->
-
-
-			<!-- Слайдер пока не делаем -->
-			<!-- <div class="col-md-1">
-				<div class="col-left-right">
-					<i class="fas fa-chevron-right fa-2x"></i>
+			<div class="row-cards">
+				<div class="cards-clothes">
+					
 				</div>
-			</div> -->
+				<div class="cards-clothes">
+
+				</div>
+			</div>
 		</div>
 		
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-1">
 				<div class="card">
 					<div class="card-search">
@@ -286,7 +236,7 @@
 									<div class="col-md-30">
 										<div class="card card-clothes">
 											<div class="card-body">
-												
+												<img class="card-clothes-img" src="http://141.105.134.186/files/img/clothes/Shirt_short_sleeves_F.png" alt="">
 											</div>
 										</div>
 									</div>
@@ -355,7 +305,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 
