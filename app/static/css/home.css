@@ -111,9 +111,7 @@ body {
 	padding-top: 15px;
 }
 
-.card-search {
-	padding: .75rem 1.25rem;
-}
+
 
 .card {
     position: relative;
@@ -294,3 +292,4 @@ body {
     text-align: center;
     font-weight: 600;
 }
+
