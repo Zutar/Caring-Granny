@@ -103,9 +103,10 @@ function getWather(lat, lan) {
         return data.data
 
     }).then((data) => {
+        let el;
         for(let i = 0; i < data.length && i < 3; i++)
         {
-            let el = data[i];
+            el = data[i];
             let date = {
                 hours: '00',
                 minutes: '00',
@@ -129,10 +130,22 @@ function getWather(lat, lan) {
                 el.main.pressure,
                 el.main.humidity
             );
+
+            console.log(el.main.feels_like)
+
+            
+
             let wrapper = document.getElementById("weather");
             wrapper.innerHTML += weatherComponent.component(weatherComponent.cardColors[i]);
             console.log(el)
         }
+        
+        // Вывод одежвы в зависимости от температуры
+        let clothOut = new ClothOut("block_3","block_1","block_2","block_4" )
+        clothOut.getClothes(
+            el.main.feels_like,
+            1
+        )
 
     });
 

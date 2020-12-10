@@ -12,7 +12,10 @@
     align-items: center;
     justify-content: space-around;
 }
-
+.card-body{
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+}
 
 .card-green {
 	border-left: 9px solid #40B562;

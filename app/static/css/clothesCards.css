@@ -9,6 +9,7 @@
 
 .label {
     text-align: center;
+    margin-bottom: 0.5rem;
     font-size: 2em;
     font-weight: 600;
 }
@@ -17,7 +18,12 @@
     display: flex;
     justify-content: space-around;
     width: 100%;
-    margin-top: 3%;
+    height: 12rem;
+}
+.row-cards-second{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
 }
 
 .cards-clothes{
@@ -47,12 +53,14 @@
     border: 2px solid #5B4D8A;
     border-radius: .5rem;
     padding: .1rem;
-    /* background-color: #e3dfed; */
+    margin-top: 1rem;
+    margin-left: 5px;
+    margin-right: 5px;
 }
+
 .clothes-card-bg {
     background-color: #100038f3;
 }
-
 
 .one-clothes-component-img {
     max-width: auto;

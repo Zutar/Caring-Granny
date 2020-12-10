@@ -7,31 +7,88 @@ class ClothOut {
         this.accessory = document.getElementById(accessory);
     }
 
-    iconPattern(imgUrl, bgClass = 'clothes-card-bg') {
+    iconPattern(imgUrl, bgClass = '') {
         return `
-            <div class="clothes-card-bg">
+            <div class="${bgClass}">
                 <div class="one-clothes-component">
-                    <img class="one-clothes-component-img" src="${imgUrl}" alt="">
+                    <img class="one-clothes-component-img" src="http://${imgUrl}" alt="">
                 </div>
             </div>
         `;
     }
+// 1	"shirt"
+// 2	"pants"
+// 3	"dresses"
+// 4	"sweater"
+// 5	"outerwear"
+// 6	"foots"
+// 7	"other"
+    outCards(typeClothes, url) {
+        switch (typeClothes) {
+            case 'shirt':
+                this.light_clothingHtml.innerHTML += this.iconPattern(url);
+                break;
 
-    getClothes() {
-        let response = fetch(`/clothes/findSet?temperature=2precipitation=false&gender=1`);
+            case 'pants':
+                this.footwearHtml.innerHTML += this.iconPattern(url);
+                break;
+
+            case 'dresses':
+                this.footwearHtml.innerHTML += this.iconPattern(url);
+                break;
+
+            case 'sweater':
+                this.light_clothingHtml.innerHTML += this.iconPattern(url);
+                break;
+
+            case 'outerwear':
+                this.outerwearNtml.innerHTML += this.iconPattern(url);
+                break;
+
+            case 'foots':
+                this.footwearHtml.innerHTML += this.iconPattern(url);
+                break;
+
+            case 'other':
+                this.accessory = document.getElementById(accessory);
+                break;
+
+            default:
+                this.accessory = document.getElementById(accessory);
+                break;
+        }
+    }
+
+    getClothes(temp = 0, gender = 1, res = false) {
+        let response = fetch(`/clothes/findSet?temperature=${temp}&precipitation=${res}&gender=${gender}`);
         response.then((response) => {
 
             return response.json();
     
         }).then((data) => {
-    
-            console.log(data.data)
-    
+            let clothes = data.data;
+
+            // Не баг а фича
+            if(clothes.length == 0) {
+                this.getClothes(temp + 1, 3)
+            }
+
+            for(let i = 0; i < clothes.length; i++) {
+                let cl = clothes[i];
+                this.outCards(
+                    cl.descr,
+                    cl.img_url
+                )
+            }
+
+
+            console.log(clothes)
         }).catch((er) => {
             console.log(er, "error")
         })
     }
 }
 
-let clothOut = new ClothOut()
-clothOut.getClothes()
+// outerwear, light_clothing, footwear, accessory
+// let clothOut = new ClothOut("block_3","block_1","block_2","block_4" )
+// clothOut.getClothes()
