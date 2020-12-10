@@ -1,7 +1,25 @@
-localStorage.getItem('lat');
-localStorage.getItem('lon');
+/*function getGeolocation(){
+    fetch('https://geolocation-db.com/json/')
+    .then((response) => {
+        return response.json();
+    }).then((data) => {
+        const lat = data.latitude,
+        lon = data.longitude;
 
-let promise = fetch(`/geo/findName?lat=${lat}&lon=${lan}`)
+        console.log(localStorage.getItem('lat'));
+
+        localStorage.setItem('lat', lat);
+        localStorage.setItem('lon', lon);
+        
+    });
+}*/
+
+navigator.geolocation.getCurrentPosition(function(position) {
+    const lat = position.coords.latitude,
+     lon = position.coords.longitude;
+
+
+let promise = fetch(`/geo/findName?lat=${lat}&lon=${lon}`)   
 
 promise.then((response) => {
 
@@ -15,13 +33,15 @@ promise.then((response) => {
     
         let country = data.country;
         let state=data.state;
+        insert_cord(country,state)
+    {       let wrapper = document.getElementById("loc");
+            wrapper.innerHTML =`${country},${state}`;
+            console.log(country,state);
+}
+    insert_cord(country,state);
     });
 
-    
+})
 
-insert_cord(country,state)
-{element = document.getElementById("loc");
-console.log(country,state);
-}
-insert_cord();
+
 
