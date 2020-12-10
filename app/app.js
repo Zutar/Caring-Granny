@@ -9,10 +9,10 @@ const client= new Pool({
 
 client.connect((err) => {
     if (err) {
-        return console.error("Ошибка: " + err.message);
+        return console.error("Error: " + err.message);
     }
     else{   
-        console.log("Подключение к серверу MySQL успешно установлено");
+        console.log("Connection to MySQL server successfully established");
         
         const index = require('./routes/index')(client);
         const app = express();
