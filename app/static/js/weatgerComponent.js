@@ -40,7 +40,7 @@ class WeatherComponent {
 							<div class="col-2 col-2-padding">${this.winter} км/час</div>
 							
 							<div class="col-2 col-2-border">Давление</div>
-							<div class="col-2 col-2-padding">${this.pressure}мм рт.ст.</div>
+							<div class="col-2 col-2-padding">${this.pressure} мм рт.ст.</div>
 							
 							<div class="col-2 col-2-border">Влажность</div>
 							<div class="col-2 col-2-padding">${this.humidity}%</div>
