@@ -6,9 +6,6 @@ function getGeolocation(){
         const lat = data.latitude,
         lon = data.longitude;
 
-        console.log(localStorage.getItem('lat'));
-        console.log(localStorage.getItem('lon'))
-
         localStorage.setItem('lat', lat);
         localStorage.setItem('lon', lon);
         
@@ -24,10 +21,7 @@ promise.then((response) => {
         if(city===undefined)  city=data.town;
         let state=data.state;
         let wrapper = document.getElementById("loc");
-        wrapper.innerHTML =`${city},${state}`;
-        console.log(city,state);
-
-    
+        wrapper.innerHTML =`${city}, ${state}`;    
     });
 
 });
