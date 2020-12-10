@@ -45,7 +45,9 @@
 Если не установлен git: `$sudo apt install git`
 
 `$sudo mkdir /project`
+
 `$sudo git clone github.com/Zutar/CaringMilf_app`
+
 `$cd /app`
 Ввести команду: `$sudo npm install` (скачиваем необходимые модули)
 После установки пишем: `$sudo node app`
