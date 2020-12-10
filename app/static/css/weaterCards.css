@@ -24,8 +24,10 @@
 	border-left: 9px solid #F6BC17;
 }
 
-.card-body {
-	padding: .1rem 1.25rem;
+.header-card-body{
+    padding: 10px 10px;
+    box-shadow: 0px 0px 5px rgb(168, 168, 168);
+    border-radius: .9rem;
 }
 
 .time-weather {
@@ -35,4 +37,11 @@
 
 .card-clothes-img{
     height: 5rem;
+}
+#current-date{
+    font-weight: 600;
+}
+.address-field{
+    font-weight: 600;
+    padding-left: 35px;
 }
