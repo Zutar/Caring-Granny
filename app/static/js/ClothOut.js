@@ -70,7 +70,7 @@ class ClothOut {
 
             // Не баг а фича
             if(clothes.length == 0) {
-                this.getClothes(temp + 1, 3)
+                this.getClothes(temp + 1, gender)
             }
 
             for(let i = 0; i < clothes.length; i++) {
