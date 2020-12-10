@@ -81,10 +81,8 @@ class ClothOut {
                 )
             }
 
-
-            console.log(clothes)
         }).catch((er) => {
-            console.log(er, "error")
+            console.log(er, "error");
         })
     }
 }

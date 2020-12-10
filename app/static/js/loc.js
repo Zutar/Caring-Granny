@@ -16,13 +16,9 @@ function getGeolocation(){
 let promise = fetch(`/geo/findName?lat=${lat}&lon=${lon}`)   
 
 promise.then((response) => {
-
     return response.json();
-
 }).then((data) => {
-
     return data.data
-
 }).then((data) => {
         let city = data.city;
         if(city===undefined)  city=data.town;
