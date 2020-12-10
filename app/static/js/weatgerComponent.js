@@ -74,12 +74,24 @@ let debug = () => {
     }
 }
 
-// Запрос на получение координат
-navigator.geolocation.getCurrentPosition(function(position) {
-        const lat = position.coords.latitude,
-            lan = position.coords.longitude;
-        getWather(lat, lan)
-})   
+function getGeolocation(){
+    fetch('https://geolocation-db.com/json/')
+    .then((response) => {
+        return response.json();
+    }).then((data) => {
+        const lat = data.latitude,
+        lon = data.longitude;
+
+        console.log(localStorage.getItem('lat'));
+
+        localStorage.setItem('lat', lat);
+        localStorage.setItem('lon', lon);
+        
+        getWather(lat, lon);
+    });
+}
+
+getGeolocation();
 
 // Получение прогноза погоды
 function getWather(lat, lan) {
