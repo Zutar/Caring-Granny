@@ -1,7 +1,6 @@
 class WeatherComponent {
     constructor(time = '12:00', 
                 temp = 8, 
-                downfall = 5, 
                 winter = 9, 
                 pressure = 750, 
                 humidity = 46, 
@@ -9,7 +8,6 @@ class WeatherComponent {
     {
         this.time = time;     // Время
         this.temp = temp;     // Температура
-        this.downfall = downfall; // Осадки
         this.winter = winter;   // Ветер
         this.pressure = pressure; // Давление
         this.humidity = humidity; // Влажность
@@ -38,14 +36,11 @@ class WeatherComponent {
 							<div class="col-2 col-2-border">Температура</div>
 							<div class="col-2 col-2-padding">${this.temp}&deg; C</div>
 							
-							<div class="col-2 col-2-border">Осадки</div>
-							<div class="col-2 col-2-padding">${this.downfall}%</div>
-							
 							<div class="col-2 col-2-border">Ветер</div>
 							<div class="col-2 col-2-padding">${this.winter} км/час</div>
 							
 							<div class="col-2 col-2-border">Давление</div>
-							<div class="col-2 col-2-padding">${this.pressure}мм рт.ст.</div>
+							<div class="col-2 col-2-padding">${this.pressure} мм рт.ст.</div>
 							
 							<div class="col-2 col-2-border">Влажность</div>
 							<div class="col-2 col-2-padding">${this.humidity}%</div>
@@ -110,44 +105,33 @@ function getWather(lat, lan) {
                     return `${this.hours}:${this.minutes}`
                 }
             };
-            const rain = parseRain(el)
-
+           
             const datetime = el.dt_txt;
             date.hours = datetime.slice(11,13);
             date.minutes = datetime.slice(17,19);
             const icon = el.weather[0].icon;
             
-
             weatherComponent = new WeatherComponent(
                 date.getClocks(),
                 el.main.temp,
-                rain,
                 el.wind.speed,
-                el.main.pressure,
+                (el.main.pressure/1.333).toFixed([2]),
                 el.main.humidity,
                 `http://openweathermap.org/img/w/${icon}.png`
             );
 
+            console.log(el.main.feels_like)
+
             let wrapper = document.getElementById("weather");
             wrapper.innerHTML += weatherComponent.component(weatherComponent.cardColors[i]);
         }
-
-        // Вывод одежвы в зависимости от температуры
-        let clothOut = new ClothOut("block_3","block_1","block_2","block_4" );
+        
+        // Вывод одежды в зависимости от температуры
+        let clothOut = new ClothOut("block_3","block_1","block_2","block_4" )
         clothOut.getClothes(
             el.main.feels_like,
             1
         );
 
-    });
-
-    function parseRain(data) {
-        if (data.rain) {
-            return 10
-        }
-        else {
-            return 0
-        }
-    }
-        
+    });        
 }
