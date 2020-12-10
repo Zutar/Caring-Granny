@@ -23,7 +23,7 @@
 
 ## Порядок установки
 1. Установить Node.js с сайта: nodejs.org (если не установленно)
-2. Скачать проект с github:  https://github.com/Zutar/CaringMilf_app
+2. Скачать проект с github:  https://github.com/Zutar/Caring-Granny
 3. Разархивировать в любую папку
 4. Перейти в папку app и открыть ее в cmd
 5. Ввести команду: `$npm install` (скачиваем необходимые модули)
@@ -46,7 +46,7 @@
 
 `$sudo mkdir /project`
 
-`$sudo git clone github.com/Zutar/CaringMilf_app`
+`$sudo git clone github.com/Zutar/Caring-Granny`
 
 `$cd /app`
 
