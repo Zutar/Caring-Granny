@@ -9,6 +9,7 @@ class CaringMilf{
     */
     get(data){
         return new Promise((resolve, reject) => {
+            if(!data.weather) resolve({status: false, code: 500});
             const t = data.weather.temperature;
             //const precipitation = data.weather.precipitation;
             const gender = data.user.gender ? data.user.gender : 3;
