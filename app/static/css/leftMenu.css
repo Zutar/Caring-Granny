@@ -69,8 +69,10 @@
 }
 .active-link-bottom-add {
     /* 303946 */
+    width: 100%;
+    height: 100%;
     border-radius: 0rem 1rem 0rem 0rem;
-    background-color: #283442;
+    background-color: #5d4f8d;
 }
 .active-link{
     background-color: #E3DFED;
