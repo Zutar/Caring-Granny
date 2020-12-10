@@ -12,12 +12,14 @@ module.exports = (function(client) {
     const path = require('path');
     const axios = require('axios').default;
     const router = express.Router();
-    let Weather = require('../bin/Weather');
-    let CaringMilf = require('../bin/CaringMilf');
+    const Weather = require('../bin/Weather');
+    const CaringMilf = require('../bin/CaringMilf');
+    const Location = require('../bin/CaringMilf');
 
 
     let cm = new CaringMilf(client);  // Clothes
     let weather = new Weather(config.weatherAPI); // Weather
+    let location = new Location(); // Location
     
     router.use('/static', express.static(path.join(__dirname + '/../static'))); // Set default static files path
     router.use(bodyParser.json({limit:'5mb'}));
@@ -127,14 +129,8 @@ module.exports = (function(client) {
         const lat = data.lat;
         const lon = data.lon;
         if(lat && lon){
-            const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
-            axios.get(url)
-            .then(function (response) {
-                let data = response.data;
-                res.send({status: true, code: 200, data: data.address});
-            })
-            .catch(function (error){
-                res.send({status: false, code: 500, error: error});
+            location.get({lat: lat, lon: lon}).then(result => {
+                res.send(result);
             });
         }else{
             res.send({status: false, code: 404});
