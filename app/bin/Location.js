@@ -1,3 +1,5 @@
+const axios = require('axios').default;
+
 class Location{
     constructor(){
 

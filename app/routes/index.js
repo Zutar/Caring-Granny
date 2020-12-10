@@ -14,7 +14,7 @@ module.exports = (function(client) {
     const router = express.Router();
     const Weather = require('../bin/Weather');
     const CaringMilf = require('../bin/CaringMilf');
-    const Location = require('../bin/CaringMilf');
+    const Location = require('../bin/Location');
 
 
     let cm = new CaringMilf(client);  // Clothes
@@ -117,7 +117,7 @@ module.exports = (function(client) {
         const temperature = data.temperature,
         precipitation = data.precipitation,
         gender = data.gender;
-
+        
         cm.get({weather: {temperature: temperature, precipitation: precipitation}, user: {gender: gender}}).then(result => {
             res.send(result);
         });
