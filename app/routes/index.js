@@ -111,7 +111,8 @@ module.exports = (function(client) {
     });
     // Finding the right set
     router.get('/clothes/findSet', (req, res) => {
-        cm.get({weather: {temperature: 5, precipitation: false}, user: {gender: 1}}).then(result => {
+        const data = req.query;
+        cm.get({weather: {temperature: data.temperature, precipitation: data.precipitation}, user: {gender: data.gender}}).then(result => {
             res.send(result);
         });
     });
