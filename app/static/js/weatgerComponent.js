@@ -83,20 +83,16 @@ function getGeolocation(){
         getWather(lat, lon);
     });
 }
-
+//getWather(lat, lon);
 getGeolocation();
 
 // Получение прогноза погоды
 function getWather(lat, lan) {
     let promise = fetch(`/weather?lat=${lat}&lon=${lan}&type=forecast`)
     promise.then((response) => {
-
         return response.json();
-
     }).then((data) => {
-
         return data.data
-
     }).then((data) => {
         let el;
         for(let i = 0; i < data.length && i < 3; i++)
@@ -113,7 +109,6 @@ function getWather(lat, lan) {
             const datetime = el.dt_txt;
             date.hours = datetime.slice(11,13);
             date.minutes = datetime.slice(17,19);
-            console.log(date.hours, date.minutes)
             const icon = el.weather[0].icon;
             
             weatherComponent = new WeatherComponent(
@@ -129,7 +124,6 @@ function getWather(lat, lan) {
 
             let wrapper = document.getElementById("weather");
             wrapper.innerHTML += weatherComponent.component(weatherComponent.cardColors[i]);
-            console.log(el)
         }
         
         // Вывод одежды в зависимости от температуры
@@ -137,7 +131,7 @@ function getWather(lat, lan) {
         clothOut.getClothes(
             el.main.feels_like,
             1
-        )
+        );
 
     });        
 }
