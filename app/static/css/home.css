@@ -56,9 +56,13 @@ body {
     font-size: 1rem;
     line-height: 1.5;
     border-radius: .6rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    outline: none;
+    transition: .2s;
+    cursor: pointer;
 }
-
+.search-button:hover{
+    background-color: #7667a7;
+}
 .btn-outline {
 	background-color: transparent;
     border: 1px solid #5D4F8D;
@@ -77,6 +81,9 @@ body {
     line-height: 1.5;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 	padding: 10px 12px;
+}
+.active-link, .clothes-left-right{
+    cursor: pointer;
 }
 @media (min-width: 768px) {
 	.input-search {
@@ -112,7 +119,9 @@ body {
 }
 
 .card-search {
-	padding: .75rem 1.25rem;
+    padding: 10px 10px;
+    box-shadow: 0px 0px 5px rgb(168, 168, 168);
+    border-radius: .9rem;
 }
 
 .card {
@@ -243,7 +252,7 @@ body {
 
 .clothes-title {
 	text-align: center;
-	font-weight: 700;
+	font-weight: 600;
 }
 
 .clothes {
@@ -252,6 +261,12 @@ body {
 	border-radius: 0.9em;
 	display: inline-block;
     width: 160px;
+    font-size: 0.9em;
+    transition: .5s;
+    cursor: pointer;
+}
+.clothes:hover{
+    transform: scale(1.05);
 }
 
 .col-center {
@@ -287,10 +302,4 @@ body {
 }
 .clothes-row {
 	justify-content: center;
-}
-
-.about-application{
-    padding: 0em 0.5em 0em 0.5em;
-    text-align: center;
-    font-weight: 600;
 }
