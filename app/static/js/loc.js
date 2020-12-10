@@ -1,4 +1,4 @@
-/*function getGeolocation(){
+function getGeolocation(){
     fetch('https://geolocation-db.com/json/')
     .then((response) => {
         return response.json();
@@ -7,18 +7,12 @@
         lon = data.longitude;
 
         console.log(localStorage.getItem('lat'));
+        console.log(localStorage.getItem('lon'))
 
         localStorage.setItem('lat', lat);
         localStorage.setItem('lon', lon);
         
-    });
-}*/
-
-navigator.geolocation.getCurrentPosition(function(position) {
-    const lat = position.coords.latitude,
-     lon = position.coords.longitude;
-
-
+    
 let promise = fetch(`/geo/findName?lat=${lat}&lon=${lon}`)   
 
 promise.then((response) => {
@@ -30,18 +24,18 @@ promise.then((response) => {
     return data.data
 
 }).then((data) => {
-    
-        let country = data.country;
+        let city = data.city;
+        if(city===undefined)  city=data.town;
         let state=data.state;
-        insert_cord(country,state)
-    {       let wrapper = document.getElementById("loc");
-            wrapper.innerHTML =`${country},${state}`;
-            console.log(country,state);
-}
-    insert_cord(country,state);
+        let wrapper = document.getElementById("loc");
+        wrapper.innerHTML =`${city},${state}`;
+        console.log(city,state);
+
+    
     });
 
-})
-
+});
+}
+getGeolocation();
 
 
