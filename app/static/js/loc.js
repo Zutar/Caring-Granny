@@ -21,7 +21,11 @@ promise.then((response) => {
         if(city===undefined)  city=data.town;
         let state=data.state;
         let wrapper = document.getElementById("loc");
-        wrapper.innerHTML =`${city}, ${state}`;    
+        let indic='<i class="fas fa-map-marker-alt"></i>';
+        wrapper.innerHTML+=`${city}, ${state} ${indic}`;
+        console.log(city,state);
+
+    
     });
 
 });
