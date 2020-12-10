@@ -1,6 +1,8 @@
 localStorage.getItem('lat');
 localStorage.getItem('lon');
 
+let promise = fetch(`/geo/findName?lat=${lat}&lon=${lan}`)
+
 promise.then((response) => {
 
     return response.json();
@@ -15,7 +17,7 @@ promise.then((response) => {
         let state=data.state;
     });
 
-    let promise = fetch(`/geo/findName?lat=${lat}&lon=${lan}`)
+    
 
 insert_cord(country,state)
 {element = document.getElementById("loc");
