@@ -50,7 +50,9 @@ class ClothOut {
                 break;
 
             case 'other':
-                this.accessory = document.getElementById(accessory);
+                if(typeof(this.accessory) === String){
+                    this.accessory = document.getElementById(accessory);
+                }
                 break;
 
             default:

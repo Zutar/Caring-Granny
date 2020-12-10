@@ -34,7 +34,7 @@ class WeatherComponent {
 							<div class="col-2 col-2-padding"><img src='${this.img_src}' class='img-weather'></div>
 							
 							<div class="col-2 col-2-border">Температура</div>
-							<div class="col-2 col-2-padding">${this.temp}&deg; C</div>
+							<div class="col-2 col-2-padding">${this.temp} &deg;C</div>
 							
 							<div class="col-2 col-2-border">Ветер</div>
 							<div class="col-2 col-2-padding">${this.winter} км/час</div>
@@ -94,10 +94,10 @@ function getWather(lat, lan) {
     }).then((data) => {
         return data.data
     }).then((data) => {
-        let el;
+        const feelsLikeTemp = data[0].main.feels_like;
         for(let i = 0; i < data.length && i < 3; i++)
         {
-            el = data[i];
+            const el = data[i];
             let date = {
                 hours: '00',
                 minutes: '00',
@@ -120,16 +120,14 @@ function getWather(lat, lan) {
                 `http://openweathermap.org/img/w/${icon}.png`
             );
 
-            console.log(el.main.feels_like)
-
             let wrapper = document.getElementById("weather");
             wrapper.innerHTML += weatherComponent.component(weatherComponent.cardColors[i]);
         }
         
         // Вывод одежды в зависимости от температуры
-        let clothOut = new ClothOut("block_3","block_1","block_2","block_4" )
+        let clothOut = new ClothOut("block_3","block_1","block_2","block_4");
         clothOut.getClothes(
-            el.main.feels_like,
+            feelsLikeTemp,
             1
         );
 
