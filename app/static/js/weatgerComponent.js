@@ -82,8 +82,6 @@ function getGeolocation(){
         const lat = data.latitude,
         lon = data.longitude;
 
-        console.log(localStorage.getItem('lat'));
-
         localStorage.setItem('lat', lat);
         localStorage.setItem('lon', lon);
         

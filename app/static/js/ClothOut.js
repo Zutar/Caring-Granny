@@ -7,9 +7,31 @@ class ClothOut {
         this.accessory = document.getElementById(accessory);
     }
 
-    iconPattern() {
-        
+    iconPattern(imgUrl, bgClass = 'clothes-card-bg') {
+        return `
+            <div class="clothes-card-bg">
+                <div class="one-clothes-component">
+                    <img class="one-clothes-component-img" src="${imgUrl}" alt="">
+                </div>
+            </div>
+        `;
     }
 
+    getClothes() {
+        let response = fetch(`/clothes/findSet?temperature=2precipitation=false&gender=1`);
+        response.then((response) => {
 
+            return response.json();
+    
+        }).then((data) => {
+    
+            console.log(data.data)
+    
+        }).catch((er) => {
+            console.log(er, "error")
+        })
+    }
 }
+
+let clothOut = new ClothOut()
+clothOut.getClothes()
