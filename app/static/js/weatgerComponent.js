@@ -114,7 +114,7 @@ function getWather(lat, lan) {
                     return `${this.hours}:${this.minutes}`
                 }
             };
-            const rain = parseRain(el)
+            //const rain = parseRain(el)
 
             const datetime = el.dt_txt;
             date.hours = datetime.slice(11,13);
@@ -149,12 +149,15 @@ function getWather(lat, lan) {
 
     });
 
-    function parseRain(data) {
-        if (data.rain) {
-            return 10
+    /*function parseRain(data) {
+        let wrapper= document.querySelectorAll('.img-weather');
+        for(let i = 0; i < 3; i++) {
+            const icon = data[i].weather[0].icon;
+            let wrapper[i].src= `http://openweathermap.org/img/w/${icon}.png`;
+            //let wrapper = document.getElementById("weather");
+            
+            
         }
-        else {
-            return 0
-        }
-    }
+        
+    }*/
 }
