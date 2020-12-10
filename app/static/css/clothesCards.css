@@ -27,7 +27,7 @@
 }
 
 .cards-clothes{
-    height: 100px;
+    height: 28px;
     width: 200px;
 }
 
@@ -37,10 +37,15 @@
 
 .one-clothes-component-label{
     text-align: center;
-    background-color: rgb(158, 158, 2);
+    background-color: #9e9e02;
     padding: 0.1rem;
     border-radius: 0.5rem;
     color:white;
+    cursor: pointer;
+    transition: .3s;
+}
+.one-clothes-component-label:hover{
+    background-color: #c0c000;
 }
 
 .one-clothes-component{
