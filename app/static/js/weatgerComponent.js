@@ -120,7 +120,8 @@ function getWather(lat, lan) {
             date.hours = datetime.slice(11,13);
             date.minutes = datetime.slice(17,19);
             console.log(date.hours, date.minutes)
-
+            const icon = el.weather[0].icon;
+            
 
             weatherComponent = new WeatherComponent(
                 date.getClocks(),
@@ -128,10 +129,15 @@ function getWather(lat, lan) {
                 rain,
                 el.wind.speed,
                 el.main.pressure,
-                el.main.humidity
+                el.main.humidity,
+                `http://openweathermap.org/img/w/${icon}.png`
             );
 
             console.log(el.main.feels_like)
+
+            //let wrapper= document.querySelectorAll('.img-weather');
+            
+            //let wrapper = document.getElementById("weather");
 
             
 
@@ -157,4 +163,5 @@ function getWather(lat, lan) {
             return 0
         }
     }
+        
 }
