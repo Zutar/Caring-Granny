@@ -49,6 +49,7 @@
 `$sudo git clone github.com/Zutar/CaringMilf_app`
 
 `$cd /app`
+
 Ввести команду: `$sudo npm install` (скачиваем необходимые модули)
 После установки пишем: `$sudo node app`
 По умолчанию проект запускается на https://localhost:3000
