@@ -20,7 +20,7 @@ class Weather{
                 const city = data.city;
                 url = `http://api.openweathermap.org/data/2.5/${type}?q=${city}&appid=${this.api}&units=metric&lang=ru`;
             }else{
-                resolve({status: false, code: 404}); // if bad request
+                resolve({status: false, code: 404});
             }
 
             axios.get(url)

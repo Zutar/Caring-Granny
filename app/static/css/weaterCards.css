@@ -1,4 +1,8 @@
 
+.card-search {
+    padding: .75rem 1.25rem;
+    height: auto;
+}
 .max-width-card {
     max-width: 500px;
 }
@@ -8,6 +12,7 @@
     align-items: center;
     justify-content: space-around;
 }
+
 
 .card-green {
 	border-left: 9px solid #40B562;
@@ -27,6 +32,11 @@
 
 .time-weather {
     font-size: 40px;
+}
+
+
+.card-clothes-img{
+    height: 5rem;
 }
 #current-date{
     font-weight: 600;
