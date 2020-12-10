@@ -6,7 +6,6 @@ module.exports = (function(client) {
     const bodyParser = require('body-parser');
     const passport = require('passport')
     const LocalStrategy = require('passport-local').Strategy
-    const bcrypt = require('bcrypt');
     const session = require('express-session');
     const config = require('../config');
     const path = require('path');
@@ -68,13 +67,7 @@ module.exports = (function(client) {
                     let userPass = result[0];
                     if(userPass){
                         userPass = userPass.password;
-                        bcrypt.compare(password, userPass, function(err, result){
-                            if(result){
-                                done(null, username);
-                            }else{
-                                return done(null, false);
-                            }
-                        });
+                        return done(null, false);
                     }else{
                         return done(null, false);
                     }
