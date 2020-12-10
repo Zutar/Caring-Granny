@@ -1,7 +1,6 @@
 class WeatherComponent {
     constructor(time = '12:00', 
                 temp = 8, 
-                downfall = 5, 
                 winter = 9, 
                 pressure = 750, 
                 humidity = 46, 
@@ -9,7 +8,6 @@ class WeatherComponent {
     {
         this.time = time;     // Время
         this.temp = temp;     // Температура
-        this.downfall = downfall; // Осадки
         this.winter = winter;   // Ветер
         this.pressure = pressure; // Давление
         this.humidity = humidity; // Влажность
@@ -37,9 +35,6 @@ class WeatherComponent {
 							
 							<div class="col-2 col-2-border">Температура</div>
 							<div class="col-2 col-2-padding">${this.temp}&deg; C</div>
-							
-							<div class="col-2 col-2-border">Осадки</div>
-							<div class="col-2 col-2-padding">${this.downfall}%</div>
 							
 							<div class="col-2 col-2-border">Ветер</div>
 							<div class="col-2 col-2-padding">${this.winter} км/час</div>
@@ -114,7 +109,7 @@ function getWather(lat, lan) {
                     return `${this.hours}:${this.minutes}`
                 }
             };
-            const rain = parseRain(el)
+            //const rain = parseRain(el)
 
             const datetime = el.dt_txt;
             date.hours = datetime.slice(11,13);
@@ -126,9 +121,9 @@ function getWather(lat, lan) {
             weatherComponent = new WeatherComponent(
                 date.getClocks(),
                 el.main.temp,
-                rain,
+                //rain,
                 el.wind.speed,
-                el.main.pressure,
+                (el.main.pressure/1.333).toFixed([2]),
                 el.main.humidity,
                 `http://openweathermap.org/img/w/${icon}.png`
             );
@@ -146,7 +141,7 @@ function getWather(lat, lan) {
             console.log(el)
         }
         
-        // Вывод одежвы в зависимости от температуры
+        // Вывод одежды в зависимости от температуры
         let clothOut = new ClothOut("block_3","block_1","block_2","block_4" )
         clothOut.getClothes(
             el.main.feels_like,
@@ -155,13 +150,13 @@ function getWather(lat, lan) {
 
     });
 
-    function parseRain(data) {
+    /*function parseRain(data) {
         if (data.rain) {
             return 10
         }
         else {
             return 0
         }
-    }
+    }*/
         
 }
